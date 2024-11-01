@@ -31,7 +31,7 @@ export const navs = [
   },
 ];
 
-export const scis = [
+export const socialIcons = [
   {
     id: 1,
     icon: 'bi-facebook',

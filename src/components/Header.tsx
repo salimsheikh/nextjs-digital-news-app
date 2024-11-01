@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 
 import './header.css';
 import Nav from './Nav';
+import SocialIcons from './SocialIcons';
 
 export default function Header() {
   return (
@@ -14,6 +15,9 @@ export default function Header() {
               <h1>DigitalNews</h1>
             </a>
             <Nav />
+            <div className="position-relative">
+              <SocialIcons />
+            </div>
         </div>
     </header>
   )
