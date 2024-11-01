@@ -63,3 +63,7 @@ git push -u origin main
 git remote add origin https://github.com/salimsheikh/nextjs-digital-news-app.git
 git branch -M main
 git push -u origin main
+
+
+### install AOS
+npm i --save-dev @types/aos
