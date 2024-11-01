@@ -34,3 +34,32 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+### Create App
+npx create-next-app@latest nextjs-digital-news-app
+
+### Change Directory
+cd nextjs-digital-news-app
+
+### Resolved installation Error
+npm install lru-cache @eslint/config-array rimraf@^4.0.0 glob@^9.0.0 @eslint/object-schema --save
+
+### Start app
+npm run dev
+
+### Installation Dependencies
+npm i aos bootstrap bootstrap-icons dotenv mongoose swiper
+
+### create a new repository on the command line
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/salimsheikh/nextjs-digital-news-app.git
+git push -u origin main
+
+### push an existing repository from the command line
+git remote add origin https://github.com/salimsheikh/nextjs-digital-news-app.git
+git branch -M main
+git push -u origin main
