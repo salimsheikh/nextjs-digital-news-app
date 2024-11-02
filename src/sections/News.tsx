@@ -20,6 +20,17 @@ export interface NewsItemType {
     author: string;
 };
 
+export const initialNewsItemData = {
+    _id: '',
+    img: '',
+    category: '',
+    date: '',
+    title: '',
+    brief: '',
+    avatar: '',
+    author: '',
+};
+
 // Main News component - fetches and displays a list of news items
 export default function News() {
     const router = useRouter(); // Initializes router for navigation
