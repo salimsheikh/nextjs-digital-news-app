@@ -6,6 +6,7 @@ import './news.css';
 
 import NewsItemOne from '@/components/NewsItemOne';
 import TrendingNews from '@/components/TrendingNews';
+import Preloader from '@/components/Preloader';
 
 // Type definition for a News item
 export type NewsItemType = {
@@ -73,7 +74,7 @@ export default function News() {
                     {/* Left column displaying a large featured news item */}
                     <div className="col-lg-4">
                         {/* Displays the single featured item if available */}
-                        {item && <NewsItemOne large={true} item={item} />}
+                        {item ? <NewsItemOne large={true} item={item} /> : <Preloader />}
                     </div>
 
                     {/* Right column displaying a grid of smaller news items */}
@@ -83,28 +84,28 @@ export default function News() {
                                 {/* Maps through news items array and displays each item */}
                                 {/* Smaller news items */ }
                                 {/* Display the first three news, not trending, not top */}
-                                {items && items.length > 0 && items.filter((item:{trending: Boolean, top: Boolean}) => !item.trending && !item.top).slice(0,3).map((item: NewsItemType) => (
+                                {items && items.length > 0 ? items.filter((item:{trending: Boolean, top: Boolean}) => !item.trending && !item.top).slice(0,3).map((item: NewsItemType) => (
                                     <NewsItemOne key={item._id} large={false} item={item} /> 
-                                ))}
+                                )) : <Preloader />}
                             </div>
                             <div className="col-lg-4 border-start custom-border">
                                 {/* Maps through news items array and displays each item */}
                                 {/* Smaller news items */ }
                                 {/* Display the next three news, not trending, not top */}
-                                {items && items.length > 0 && items.filter((item:{trending: Boolean, top: Boolean}) => !item.trending && !item.top).slice(3,6).map((item: NewsItemType) => (
+                                {items && items.length > 0 ? items.filter((item:{trending: Boolean, top: Boolean}) => !item.trending && !item.top).slice(3,6).map((item: NewsItemType) => (
                                     <NewsItemOne key={item._id} large={false} item={item} /> 
-                                ))}
+                                )) : <Preloader />}
                             </div>
                             <div className="col-lg-4">
                                 <div className="trending">
                                     <h3>Trending</h3>
                                     <ul className="trending-post">
                                         {items && items.length > 0
-                                        && items.filter((item:{trending: Boolean}) => item.trending)
+                                        ? items.filter((item:{trending: Boolean}) => item.trending)
                                         .slice(0,6)
                                         .map((item: NewsItemType, index: number) =>(
                                             <TrendingNews key={item._id}  index={index} item={item} />
-                                        ) )}
+                                        )) : <Preloader />}
                                     </ul>
                                 </div>
                             </div>
