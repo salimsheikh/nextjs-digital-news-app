@@ -9,7 +9,7 @@ import TrendingNews from '@/components/TrendingNews';
 import Preloader from '@/components/Preloader';
 
 // Type definition for a News item
-export type NewsItemType = {
+export interface NewsItemType {
     _id: string;
     img: string;
     category: string;

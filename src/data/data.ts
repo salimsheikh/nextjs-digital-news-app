@@ -7,14 +7,14 @@ export const navs = [
   },
   {
     id: 2,
-    name: 'Posts',
-    link: '/postitems',
+    name: 'News',
+    link: '/newsitems',
     active: false,
   },
   {
     id: 3,
-    name: 'Create Post',
-    link: '/createpostitems',
+    name: 'Create News',
+    link: '/createnewsitems',
     active: false,
   },
   {
