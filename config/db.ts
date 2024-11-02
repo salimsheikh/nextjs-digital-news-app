@@ -1,10 +1,18 @@
+// config/db.ts
+
 import mongoose from "mongoose";
+
+const MONGODB_URL = process.env.MONGODB_URL as string;
+
+if (!MONGODB_URL) {
+  throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
+}
 
 // Function to establish a MongoDB connection
 const connectDB = async () => {
   try {
     // Connect to MongoDB using the URL from environment variables
-    const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URL}`, {
+    const connectionInstance = await mongoose.connect(MONGODB_URL, {
       // Server selection timeout - determines how long to wait for a server response
       serverSelectionTimeoutMS: 5000, // Timeout set to 5 seconds; can be adjusted as needed
     });

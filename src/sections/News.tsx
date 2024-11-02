@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import './news.css';
 
 import NewsItemOne from '@/components/NewsItemOne';
+import TrendingNews from '@/components/TrendingNews';
 
 // Type definition for a News item
 export type NewsItemType = {
@@ -45,10 +46,24 @@ export default function News() {
             .catch(e => console.log(e.message)); // Logs any errors
     };
 
+    const getLastTopNewsData = () => {
+        fetch(`/api/newsitems/gettoplast/`)
+        .then(res => {
+            if(res.status === 200){
+                return res.json();
+            }
+
+            router.push('/not-found'); // Redirects to a 'not-found' page if the item is missing
+        })
+        .then(data => setItem(data))
+        .catch(e => console.log(e.message));
+    }
+
     // useEffect to fetch data when the component mounts
     useEffect(() => {
         getItemsData(); // Fetches all news items
-        getSingleNewsItemData('672636112d6724d9fb7b445c'); // Fetches a single featured news item by ID
+        //getSingleNewsItemData('672636112d6724d9fb7b445c'); // Fetches a single featured news item by ID
+        getLastTopNewsData()
     }, []);
 
     return (
@@ -67,12 +82,32 @@ export default function News() {
                             <div className="col-lg-4 border-start custom-border">
                                 {/* Maps through news items array and displays each item */}
                                 {/* Smaller news items */ }
-                                {items && items.length > 0 && items.map((item: NewsItemType) => (
+                                {/* Display the first three news, not trending, not top */}
+                                {items && items.length > 0 && items.filter((item:{trending: Boolean, top: Boolean}) => !item.trending && !item.top).slice(0,3).map((item: NewsItemType) => (
                                     <NewsItemOne key={item._id} large={false} item={item} /> 
                                 ))}
                             </div>
-                            <div className="col-lg-4"></div>
-                            <div className="col-lg-4"></div>
+                            <div className="col-lg-4 border-start custom-border">
+                                {/* Maps through news items array and displays each item */}
+                                {/* Smaller news items */ }
+                                {/* Display the next three news, not trending, not top */}
+                                {items && items.length > 0 && items.filter((item:{trending: Boolean, top: Boolean}) => !item.trending && !item.top).slice(3,6).map((item: NewsItemType) => (
+                                    <NewsItemOne key={item._id} large={false} item={item} /> 
+                                ))}
+                            </div>
+                            <div className="col-lg-4">
+                                <div className="trending">
+                                    <h3>Trending</h3>
+                                    <ul className="trending-post">
+                                        {items && items.length > 0
+                                        && items.filter((item:{trending: Boolean}) => item.trending)
+                                        .slice(0,6)
+                                        .map((item: NewsItemType, index: number) =>(
+                                            <TrendingNews key={item._id}  index={index} item={item} />
+                                        ) )}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

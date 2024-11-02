@@ -12,10 +12,6 @@ export async function GET() {
   const newsitems = await NewsItem.find().select('-__v');
   // Returns the fetched news items as a JSON response
 
-  console.log("Calling News Items");
-
-  console.log(newsitems);
-
   return Response.json(newsitems);
 }
 
