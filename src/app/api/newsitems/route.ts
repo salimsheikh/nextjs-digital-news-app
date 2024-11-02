@@ -11,6 +11,11 @@ export async function GET() {
   // Fetches all news items, excluding the __v field
   const newsitems = await NewsItem.find().select('-__v');
   // Returns the fetched news items as a JSON response
+
+  console.log("Calling News Items");
+
+  console.log(newsitems);
+
   return Response.json(newsitems);
 }
 

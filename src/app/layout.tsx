@@ -9,7 +9,7 @@ import 'aos/dist/aos.css';
 
 import type { Metadata } from "next";
 import { EB_Garamond } from "next/font/google";
-import Header from '@/components/Header';
+import Header from '@/components/Header'; //import header components
 import "./variables.css";
 import "./globals.css";
 
@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ebGramond.className}>
+        {/* Header Component - Displays the logo menu and social links */}
         <Header />
         {children}
       </body>
