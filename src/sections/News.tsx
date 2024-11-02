@@ -97,15 +97,23 @@ export default function News() {
                                 )) : <Preloader />}
                             </div>
                             <div className="col-lg-4">
+                                {/* Trending Section */}
                                 <div className="trending">
                                     <h3>Trending</h3>
+                                    
+                                    {/* List of Trending Posts */}
                                     <ul className="trending-post">
                                         {items && items.length > 0
-                                        ? items.filter((item:{trending: Boolean}) => item.trending)
-                                        .slice(0,6)
-                                        .map((item: NewsItemType, index: number) =>(
-                                            <TrendingNews key={item._id}  index={index} item={item} />
-                                        )) : <Preloader />}
+                                            // Filter items to only show those marked as trending
+                                            ? items.filter((item: { trending: Boolean }) => item.trending)
+                                                // Limit the list to the first 6 trending items
+                                                .slice(0, 6)
+                                                // Map through the trending items to render each one as a <TrendingNews /> component
+                                                .map((item: NewsItemType, index: number) => (
+                                                    <TrendingNews key={item._id} index={index} item={item} />
+                                                ))
+                                            // Show a preloader if no items are available
+                                            : <Preloader />}
                                     </ul>
                                 </div>
                             </div>
