@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema, Model } from 'mongoose';
 
 export interface IUser extends Document {
   username: string;
@@ -12,4 +12,7 @@ const UserSchema = new Schema<IUser>({
   password: { type: String, required: true },
 });
 
-export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
+// Export the model with the correct TypeScript type
+const User = mongoose.models.User as Model<IUser> || mongoose.model<IUser>('User', UserSchema);
+
+export default User;
