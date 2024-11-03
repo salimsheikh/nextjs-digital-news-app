@@ -1,8 +1,21 @@
 'use client';
 
-import React, {useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+// import AOS
+import AOS from 'aos';
 
 export default function CreateItem() {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: false,
+        });
+    }, []);
+
     const initialState = {
         title: '',
         img: '',
@@ -57,12 +70,12 @@ export default function CreateItem() {
         }
     }
 
-  
+
 
     return (
         <main id="main">
             <section className="create-post-content">
-                <div className="container">
+                <div className="container" data-aos="fade-up">
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-10">
                             <div className="row d-flex justify-content-between mt-5">
@@ -96,7 +109,7 @@ export default function CreateItem() {
 
                                         <div className="col-lg-12 mb-3">
                                             <label htmlFor="brief">Brief</label>
-                                            <textarea name="brief" id="brief" cols={30} rows={10} className="form-control" onChange={handleTextChange} maxLength={255} placeholder='Enter News Brief'>{text.brief}</textarea>
+                                            <textarea name="brief" id="brief" cols={30} rows={10} className="form-control" onChange={handleTextChange} maxLength={255} placeholder='Enter News Brief' value={text.brief}></textarea>
                                         </div>
 
                                         <div className="mb-3">

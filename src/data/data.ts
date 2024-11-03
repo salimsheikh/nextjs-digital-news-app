@@ -18,6 +18,12 @@ export const navs = [
     active: false,
   },
   {
+    id: 33,
+    name: 'Login',
+    link: '/login',
+    active: false,
+  },
+  {
     id: 4,
     name: 'About',
     link: '/about',

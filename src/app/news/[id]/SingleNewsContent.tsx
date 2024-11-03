@@ -1,8 +1,36 @@
 import { NewsItemType } from '@/sections/News'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 // Component to display the detailed content of a single news item
 export default function SingleNewsContent({ item }: { item: NewsItemType }) {
+
+    const id = item._id;
+
+    const router = useRouter();
+
+    const handleDeleteItem =  async (id: string) => {
+        //Delete POST request
+        try{
+            const response = await fetch(`/api/news/${id}`,{
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const result = response.status;
+            if(result === 200){
+                console.log("Successfully delete news.");
+                router.push(`/news`)
+            }
+
+        }catch(error){
+            console.log("Error:" + error);
+        }
+    }
+
     return (
         <div className="single-post">
              {/* Display metadata for the news post */}
@@ -68,6 +96,15 @@ export default function SingleNewsContent({ item }: { item: NewsItemType }) {
             <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos
             </p>
+
+            <div className="d-flex justify-content-center gap-4">
+                <a  href="#" className="btn btn-primary" onClick={() => handleDeleteItem(id)}>
+                    <i className="bi bi-trash"></i>
+                </a>
+                <Link className="btn btn-primary" href={`/news/update/${id}`}>
+                    <i className="bi bi-pen"></i>
+                </Link>
+            </div>
         </div>
     )
 }

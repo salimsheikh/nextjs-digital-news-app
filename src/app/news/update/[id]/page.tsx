@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from 'react'
 
+// import AOS
+import AOS from 'aos';
+
 // Type definition for route parameters (such as news item ID)
 type Params = {
   id: string;
@@ -14,6 +17,15 @@ interface SinglePageProps {
 
 // Main component to display a single news post and sidebar news items
 export default function EditItem({ params }: SinglePageProps) {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: false,
+    });
+  }, []);
 
   const initialState = {
     title: '',
@@ -87,7 +99,7 @@ export default function EditItem({ params }: SinglePageProps) {
   return (
     <main id="main">
       <section className="create-post-content">
-        <div className="container">
+        <div className="container" data-aos="fade-up">
           <div className="row d-flex justify-content-center">
             <div className="col-lg-10">
               <div className="row d-flex justify-content-between mt-5">

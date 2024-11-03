@@ -22,7 +22,7 @@ export default function page() {
   // useEffect hook to fetch news items on component mount and when items change
   useEffect(() => {
     getItemsData();
-  }, [items]);
+  }, []);
 
   // Render page content
   return (
