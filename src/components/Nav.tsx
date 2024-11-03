@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './nav.css';
 import Link from 'next/link';
 
 // Imports navigation links data
-import { navs } from '@/data/data'; 
+import { navs } from '@/data/data';
+import { useAuth } from '@/hooks/useAuth';
 
-export default function Nav() {
+
+export default function Nav() {  
   return (
     <nav id="nabbar" className='navbar'>
       <ul>

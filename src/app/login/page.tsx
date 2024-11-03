@@ -70,13 +70,11 @@ const Login = () => {
             <div className="col-lg-4">
               <div className="row d-flex justify-content-between mt-5">
                 <div className="col-lg-12">
-
                   <div className="row">
                     <div className="col-lg-12 text-center mb-5">
                       <h1 className="page-title">Login</h1>
                     </div>
                   </div>
-
                   {/* Display Alert for success or error messages */}
                   {alertMessage && (
                     <div className={`alert alert-${alertType} mb-4`} role="alert">
@@ -101,6 +99,7 @@ const Login = () => {
                       </div>
                     </div>
                   </form>
+                  
                 </div>
               </div>
             </div>
