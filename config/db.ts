@@ -8,8 +8,15 @@ if (!MONGODB_URL) {
   throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
 }
 
+let isConnected = false; // Track the connection sta
+
 // Function to establish a MongoDB connection
 const connectDB = async () => {
+
+  if (isConnected) {
+    return; // Use existing connection if already connected
+  }
+
   try {
     // Connect to MongoDB using the URL from environment variables
     const connectionInstance = await mongoose.connect(MONGODB_URL, {
@@ -17,8 +24,11 @@ const connectDB = async () => {
       serverSelectionTimeoutMS: 5000, // Timeout set to 5 seconds; can be adjusted as needed
     });
 
+    isConnected = !!connectionInstance.connections[0].readyState;
+
     // Logs the successful connection and displays the MongoDB host
     console.log(`\n MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`);
+      
   } catch (error) {
     // Logs the error message if connection fails and exits the process
     console.log("MONGODB connection error - ", error);
