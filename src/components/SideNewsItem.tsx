@@ -14,7 +14,7 @@ export default function SideNewsItem({item} : {item: NewsItemType}) {
             <span className="date">{ new Date(item.date).toLocaleDateString('en-us')}</span>
         </div>
         <h2 className="mb-2">
-            <Link href={`/newsitems/${item._id}`}>{item.title}</Link>
+            <Link href={`/news/${item._id}`}>{item.title}</Link>
         </h2>
         {item.author && <span className='author mb-3 d-block'>{item.author}</span>}
     </div>

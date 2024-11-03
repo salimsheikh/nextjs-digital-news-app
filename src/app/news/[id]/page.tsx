@@ -51,7 +51,7 @@ export default function page({ params }: SinglePageProps) {
 
     // Function to fetch all news items from the API
     const getItemsData = () => {
-        fetch(`/api/newsitems`)
+        fetch(`/api/news/`)
             .then(res => res.json())
             .then(data => setItems(data)) // Sets the fetched news items to state
             .catch(e => console.log("message: " + e.message)); // Logs any errors
@@ -59,7 +59,7 @@ export default function page({ params }: SinglePageProps) {
 
     // Function to fetch a single news item based on the ID parameter
     const getSingleNewsData = () => {
-        fetch(`/api/newsitems/${id}`)
+        fetch(`/api/news/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
             .catch(e => console.log(e.message));

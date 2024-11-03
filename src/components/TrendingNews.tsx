@@ -13,7 +13,7 @@ export default function TrendingNews({ item, index }: {
     return (
         <li>
             {/* Link each trending item to its detailed page based on the item’s ID */}
-            <Link href={`/newsitems/${item._id}`}>
+            <Link href={`/news/${item._id}`}>
                 {/* Display index as item ranking, incremented by 1 for 1-based numbering */}
                 <span className='number'>{index + 1}</span> 
                 

@@ -13,7 +13,7 @@ export default function page() {
 
   // Function to fetch news items from the API
   const getItemsData = () => {
-    fetch(`/api/newsitems/`) // Fetch request to retrieve news items
+    fetch(`/api/news/`) // Fetch request to retrieve news items
     .then(res => res.json()) // Parse JSON response
     .then(data => setItems(data)) // Update items state with fetched data
     .catch(e => console.log(e.message)); // Log any errors in the fetch request

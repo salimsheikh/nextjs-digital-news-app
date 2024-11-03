@@ -39,7 +39,7 @@ export default function News() {
 
     // Fetches all news items from the API
     const getItemsData = () => {
-        fetch(`/api/newsitems`)
+        fetch(`/api/news`)
             .then(res => res.json())
             .then(data => setItems(data)) // Sets the fetched news items to state
             .catch(e => console.log("message: " + e.message)); // Logs any errors
@@ -47,7 +47,7 @@ export default function News() {
 
     // Fetches a single news item by ID and sets it to the `item` state
     const getSingleNewsItemData = (id: string) => {
-        fetch(`/api/newsitems/${id}`)
+        fetch(`/api/news/${id}`)
             .then(res => {
                 if (res.status == 404) { // Checks if item is not found
                     router.push('/not-found'); // Redirects to a 'not-found' page if the item is missing
@@ -59,7 +59,7 @@ export default function News() {
     };
 
     const getLastTopNewsData = () => {
-        fetch(`/api/newsitems/gettoplast/`)
+        fetch(`/api/news/topone/`)
         .then(res => {
             if(res.status === 200){
                 return res.json();

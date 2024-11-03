@@ -13,7 +13,7 @@ export default function NewsItemOne({ large, item }: {
   return (
     <div className={`post-entry-1 ${large ? 'lg' : ''}`}>
         {/* Link to individual news item page */}
-        <Link href={`newsitems/${item._id}`}>
+        <Link href={`news/${item._id}`}>
             <img src={`/${item.img}`} alt='' className='img-fluid' /> {/* News item image */}
         </Link>
 
@@ -28,7 +28,7 @@ export default function NewsItemOne({ large, item }: {
 
         {/* Title of the news item */}
         <h2>
-            <Link href={`newsitems/${item._id}`}>{item.title}</Link>
+            <Link href={`news/${item._id}`}>{item.title}</Link>
         </h2>
 
         {/* Conditional rendering for large format items */}

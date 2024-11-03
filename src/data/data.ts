@@ -8,13 +8,13 @@ export const navs = [
   {
     id: 2,
     name: 'News',
-    link: '/newsitems',
+    link: '/news',
     active: false,
   },
   {
     id: 3,
     name: 'Create News',
-    link: '/createnewsitems',
+    link: '/news/create',
     active: false,
   },
   {
